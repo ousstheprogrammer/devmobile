@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  .generated-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.generated-table td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: center;
+    background-color: #e9f2ff;
+}
+
+.generated-table td:hover {
+    background-color: #cfe0ff;
+}
+    </style>
+</head>
+<body>
+   <form id="formulaire" class="form-container">
+    <label for="dimension" class="form-label">Dimension du tableau :</label>
+    <input type="text" id="dimension" class="form-input">
+
+    <label for="min" class="form-label">Valeur minimale :</label>
+    <input type="text" id="min" class="form-input">
+
+    <label for="max" class="form-label">Valeur maximale :</label>
+    <input type="text" id="max" class="form-input">
+
+    <button type="submit" class="btn-primary">Générer</button>
+</form>
+
+<div id="erreur" style="color:red;"></div>
+<div id="resultat"></div>
+ <script>
+
+const form = document.getElementById("formulaire");
+const resultat = document.getElementById("resultat");
+const erreur = document.getElementById("erreur");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    resultat.innerHTML = "";
+    erreur.innerHTML = "";
+
+    const dim = parseInt(document.getElementById("dimension").value);
+    const min = parseInt(document.getElementById("min").value);
+    const max = parseInt(document.getElementById("max").value);
+
+    if (isNaN(dim) || isNaN(min) || isNaN(max)) {
+        erreur.textContent = "Les champs doivent être des entiers.";
+        return;
+    }
+
+    if (min >= max) {
+        erreur.textContent = "La valeur minimale doit être inférieure à la valeur maximale.";
+        return;
+    }
+
+    const table = document.createElement("table");
+    table.classList.add("generated-table");
+    let row;
+
+    for (let i = 0; i < dim; i++) {
+
+        if (i % 10 === 0) {
+            row = document.createElement("tr");
+            table.appendChild(row);
+        }
+
+        const cell = document.createElement("td");
+
+        const random = Math.floor(Math.random() * (max - min + 1)) + min;
+        cell.textContent = random;
+
+        row.appendChild(cell);
+    }
+
+    resultat.appendChild(table);
+}); 
+
+</script>
+</body>
+</html>

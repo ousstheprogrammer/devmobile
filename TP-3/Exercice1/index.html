@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js" defer></script>
+</head>
+<body>
+   <form action="">
+        <Div class ="Registre">
+            <h2> Formulaire d'inscription </h2>
+            <label for="Nom"> Nom :    </label>
+            <Input class="InscrForm" id="Nom" type="text" placeholder="saisie votre nom" novalidate="">
+            <br>
+            <label for="Prenom">   Prénom :    </label>
+            <Input class="InscrForm" id="Prenom" type="text" placeholder="saisie votre prénom" novalidate="">
+            <br>
+            <label for="AdressEmail"> Adress Email:    </label>
+            <Input class="InscrForm" id="Email" type="email" placeholder="saisie votre adresse email" novalidate="">
+            <br>
+            <label for="PassWord"> Mot de passe :    </label>
+            <Input class="InscrForm" id="PassWord" type="password" placeholder="saisie votre mot de passe" novalidate="">
+             <br>
+             <label for="ResaisirMP"> Ré-saisie mot de passe :    </label>
+             <Input class="InscrForm" id="ResaisirMP" type="password" placeholder="ré-saisie votre mot de passe" novalidate="">
+             <br>
+             <label for="Tele"> Téléphone :    </label>
+            <Input class="InscrForm" id="Tel" type="text" placeholder="saisie votre numéro de téléphone" novalidate="">
+            <br>
+            <label for="Langue"> Langue :    </label>
+            <select name="Langue" id="Langue">
+                <option value="Français">Français</option>
+                <option value="Anglais">Anglais</option>
+                <option value="Espagnol">Espagnol</option>
+                <option value="arabe">Arabe</option>
+            </select>
+            <br>
+            <label for="Cmt"> Commentaire :    </label>
+            <textarea name="Cmt" id="Cmt" cols="30" rows=""></textarea>
+             <br>
+             <input type="button" value="Annuler" id="Annuler">
+             <input type="submit" value="Valider" id="Valider">
+        </Div>
+    </form>
+    <div id="recap"></div>
+
+</body>
+</html>
